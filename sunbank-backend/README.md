@@ -1,4 +1,4 @@
-# SunBank backend (CodeNoir 2026 prototype)
+# SunBank backend 
 
 Pilot: 50 MW solar + 20 MW / 80 MWh BESS at Bhadla. **All weather data is SYNTHETIC for now**; swap `app/synthetic.py`
 for ERA5 / Open-Meteo loaders that return the same columns (see `generate()`), nothing else changes.
