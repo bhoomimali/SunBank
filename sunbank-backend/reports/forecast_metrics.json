@@ -1,0 +1,61 @@
+{
+  "metrics": {
+    "nmae": 5.81,
+    "nrmse": 9.04,
+    "pinball": 0.903,
+    "coverage": 82.4,
+    "skill_vs_raw": 19.2,
+    "skill_vs_persistence": 24.6,
+    "cqr_qhat_mw": 0.808,
+    "test_blocks": 17520
+  },
+  "by_regime": [
+    {
+      "regime": "Clear Sky",
+      "nmae": 4.82,
+      "coverage": 83.7
+    },
+    {
+      "regime": "Winter Fog",
+      "nmae": 13.1,
+      "coverage": 45.6
+    },
+    {
+      "regime": "Monsoon",
+      "nmae": 10.3,
+      "coverage": 73.4
+    },
+    {
+      "regime": "Summer Heat",
+      "nmae": 2.74,
+      "coverage": 94.2
+    },
+    {
+      "regime": "Stubble Haze",
+      "nmae": 4.14,
+      "coverage": 86.2
+    }
+  ],
+  "calibration": [
+    {
+      "nominal": 10,
+      "observed": 9.2
+    },
+    {
+      "nominal": 30,
+      "observed": 31.1
+    },
+    {
+      "nominal": 50,
+      "observed": 45.0
+    },
+    {
+      "nominal": 70,
+      "observed": 60.5
+    },
+    {
+      "nominal": 90,
+      "observed": 91.5
+    }
+  ]
+}

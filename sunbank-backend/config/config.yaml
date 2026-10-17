@@ -1,0 +1,59 @@
+# All tunables live here. Every value tagged ASSUMPTION is a demo choice, not a measurement.
+site:
+  name: "Bhadla Solar Park (pilot, 50 MW feeder)"
+  lat: 27.5
+  lon: 71.9
+  altitude_m: 230
+  tz: "Asia/Kolkata"
+  linke_turbidity: 2.5          # ASSUMPTION dusty desert sky
+plant:
+  ac_mw: 50
+  dc_mwp: 65                    # ASSUMPTION DC/AC 1.3
+  tilt_deg: 27                  # ASSUMPTION fixed tilt ~ latitude
+  azimuth_deg: 180
+  temp_coeff_per_c: -0.0035     # ASSUMPTION
+  soiling: 0.04                 # ASSUMPTION
+  other_losses: 0.08            # ASSUMPTION
+  inverter_eff: 0.98            # ASSUMPTION
+  noct_rise_per_wm2: 0.03       # ASSUMPTION cell temp = ambient + 0.03*POA
+grid:
+  limit_mw: 30                  # ASSUMPTION demo evacuation limit (adjustable)
+bess:
+  mw: 20                        # ASSUMPTION
+  mwh: 80                       # ASSUMPTION
+  soc_min: 0.10
+  soc_max: 0.90
+  soc_start: 0.20
+  eta_charge: 0.95              # ~90.25% round trip
+  eta_discharge: 0.95
+  deg_inr_per_mwh: 300          # ASSUMPTION throughput degradation cost
+  thermal_tau_h: 2.0            # ASSUMPTION first-order thermal model
+  thermal_k_c_per_mw: 0.35      # ASSUMPTION
+dsm:
+  band_pct: 5                   # CERC solar band since 1 Apr 2026 (verify in the order)
+  rate_inr_per_mwh: 2500        # ASSUMPTION reference rate
+  multiplier: 1.5               # ASSUMPTION penalty multiplier
+  revisions_per_day: 16         # NOT modelled, config only
+market:
+  mode: flat_ppa                # flat_ppa | market
+  flat_tariff_inr_per_mwh: 2500 # ASSUMPTION
+  tie_break_inr_per_mwh: 100    # ASSUMPTION small evening preference when prices are flat
+  evening_start_block: 70       # 17:30
+  evening_end_block: 89         # 22:15
+optimizer:
+  risk_mode: p50                # p50 | balanced | risk_aware | conservative
+  use_milp_plan: true           # binaries in day-ahead plan
+  use_milp_rolling: false       # LP for rolling re-solves
+  reopt_tol_mw: 0.75            # re-solve only if actual differs from last forecast by more
+rule_battery:
+  evening_start_block: 72       # 18:00
+  evening_end_block: 88         # 22:00
+  discharge_mw: 15
+synthetic:
+  start: "2022-01-01"
+  end: "2024-12-31"
+  seed: 7
+split:
+  train_end: "2023-06-30"
+  calib_end: "2023-12-31"       # test = 2024
+co2_factor_t_per_mwh: 0.82      # ASSUMPTION verify against current CEA value
